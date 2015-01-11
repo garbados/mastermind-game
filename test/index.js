@@ -15,13 +15,17 @@ describe('mastermind', function () {
 
     it('should determine a guess is correct', function () {
       var puzzle = new lib.Puzzle();
+      puzzle.secret = [1, 2, 3, 4];
       var judgment = puzzle.judge(puzzle.secret);
       chai.expect(judgment.B).to.equal(puzzle.secret_length);
     });
 
     it('should determine a guess is not correct', function () {
       var puzzle = new lib.Puzzle();
-      var guess = new Array(puzzle.secret_length).join(puzzle.secret[0]);
+      puzzle.secret = [1, 2, 3, 4];
+      var guess = puzzle.secret.map(function () {
+        return puzzle.secret[0];
+      });
       var judgment = puzzle.judge(guess);
       chai.expect(judgment.W).to.above(0);
     });
