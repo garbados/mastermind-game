@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/garbados/mastermind-game.svg)](https://travis-ci.org/garbados/mastermind-game)
 
+![Mastermind!](http://upload.wikimedia.org/wikipedia/commons/2/2d/Mastermind.jpg)
+
 Play [Mastermind](http://en.wikipedia.org/wiki/Mastermind_%28board_game%29) in your terminal!
 
 ## Install
