@@ -22,16 +22,12 @@ Run `mastermind --help` to see usage options.
 
 To run the test suite:
 
-	git clone https://github.com/garbados/mastermind.js.git
+	git clone https://github.com/garbados/mastermind-game.git
 	cd mastermind.js
 	npm install
 	npm test
 
-To see coverage reports:
-
-	npm run report
-
-Now, in a browser, open up the `index.html` file that `npm run report` generated. It contains a code coverage report as a simple web page.
+To see coverage reports, open up the `index.html` file that `npm test` generates. It contains a code coverage report as a simple web page.
 
 ## License
 

@@ -7,7 +7,7 @@
     "jshint": "./node_modules/.bin/jshint bin lib test",
     "mocha": "./node_modules/.bin/mocha -R spec --recursive",
     "cov": "./node_modules/.bin/jscoverage lib cov",
-    "report": "./node_modules/.bin/mocha NODE_COVERAGE=true -R html-cov > index.html",
+    "report": "./node_modules/.bin/mocha -R html-cov > index.html",
     "test": "npm run jshint && npm run mocha && npm run cov && npm run report"
   },
   "bin": {
@@ -15,12 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/garbados/mastermind.js.git"
+    "url": "https://github.com/garbados/mastermind-game.git"
   },
   "author": "Diana Thayer <me@dianathayer.org>",
   "license": "ISC",
   "devDependencies": {
     "chai": "^1.10.0",
+    "jscoverage": "^0.5.9",
     "jshint": "^2.5.11",
     "mocha": "^2.1.0"
   },
