@@ -10,6 +10,9 @@
     "report": "./node_modules/.bin/mocha NODE_COVERAGE=true -R html-cov > index.html",
     "test": "npm run jshint && npm run mocha && npm run cov && npm run report"
   },
+  "bin": {
+  	"mastermind": "./bin/index.js"
+  },
   "repository": {
   	"type": "git",
   	"url": "http://github.com/garbados/mastermind.js.git"
