@@ -27,7 +27,7 @@ Run `mastermind --help` to see usage options.
 To run the test suite:
 
 	git clone https://github.com/garbados/mastermind-game.git
-	cd mastermind.js
+	cd mastermind-game
 	npm install
 	npm test
 
