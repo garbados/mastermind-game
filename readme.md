@@ -1,4 +1,4 @@
-# mastermind.js
+# mastermind-game
 
 [![Build Status](https://travis-ci.org/garbados/mastermind-game.svg)](https://travis-ci.org/garbados/mastermind-game)
 
