@@ -3,13 +3,15 @@
 var pjson = require('../package.json');
 var Puzzler = require('../lib/puzzler');
 var yargs = require('yargs')
-            .usage('Usage: $0 [action] [-l, --length] [-m, --max]')
-            .example('$0', 'play a game with a 4-length secret with integers from 1 to 6')
-            .example('$0 watch -l 15 -m 25', 'watch an algorithm reason out a 15-length secret with integers from 1 to 25')
+            .usage('Usage: ' + pjson.name + ' [action] [-l, --length] [-m, --max]')
+            .example(pjson.name + ' play', 'play a game with a 4-length secret with integers from 1 to 6')
+            .example(pjson.name + ' watch -l 15 -m 25', 'watch an algorithm reason out a 15-length secret with integers from 1 to 25')
             .default('length', 4)
             .alias('l', 'length')
+            .describe('l', 'number of numbers in the secret number sequence')
             .default('max', 6)
             .alias('m', 'max')
+            .describe('m', 'the maximum number a secret number can be')
             .demand(1)
             .version('v' + pjson.version + '\n', 'version');
 var argv = yargs.argv;
