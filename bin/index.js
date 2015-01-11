@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var pjson = require('../package.json');
-var Puzzler = require('../lib/puzzler');
+var Puzzle = require('../lib/puzzle');
+var Solver = require('../lib/solver');
 var yargs = require('yargs')
             .usage('Usage: ' + pjson.name + ' [action] [-l, --length] [-m, --max]')
             .example(pjson.name + ' play', 'play a game with a 4-length secret with integers from 1 to 6')
@@ -18,7 +19,7 @@ var argv = yargs.argv;
 
 switch (argv._[0]) {
   case 'play':
-    var puzzle = new Puzzler(argv.length, argv.max);
+    var puzzle = new Puzzle(argv.length, argv.max);
     console.log('Now playing with');
     console.log('* ' + puzzle.secret_length + '-character secret');
     console.log('* integers from 1 to ' + puzzle.secret_max);
@@ -49,7 +50,15 @@ switch (argv._[0]) {
     });
     break;
   case 'watch':
-    console.error('Solver AI not yet implemented :(');
+    var puzzle = new Puzzle();
+    var solver = new Solver(puzzle);
+    var round = 0;
+    solver.solve(function (guess, judgment) {
+      round++;
+      console.log(round, guess, judgment);
+    }, function () {
+      console.log('Completed in', round, 'rounds.');
+    });
     break;
   case 'help':
     console.log(yargs.help());
