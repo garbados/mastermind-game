@@ -12,7 +12,6 @@ var yargs = require('yargs')
             .default('max', 6)
             .alias('m', 'max')
             .describe('m', 'the maximum number a secret number can be')
-            .demand(1)
             .version('v' + pjson.version + '\n', 'version');
 var argv = yargs.argv;
 
