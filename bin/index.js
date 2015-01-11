@@ -30,7 +30,7 @@ switch (argv._[0]) {
     console.log('* ' + puzzle.secret_length + '-character secret');
     console.log('* integers from 1 to ' + puzzle.secret_max);
     console.log('Guess with spaces between integers, ex: 1 2 3 4');
-    console.log('To exit, press CTRL-C.')
+    console.log('To exit, press CTRL-C.');
     console.log('Have fun!');
     var rounds = 0;
     if (argv.cheat)
