@@ -1,5 +1,7 @@
 # mastermind.js
 
+[![Build Status](https://travis-ci.org/garbados/mastermind-game.svg)](https://travis-ci.org/garbados/mastermind-game)
+
 Play [Mastermind](http://en.wikipedia.org/wiki/Mastermind_%28board_game%29) in your terminal!
 
 ## Install
