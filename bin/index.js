@@ -2,11 +2,10 @@
 
 var pjson = require('../package.json');
 var Puzzle = require('../lib/puzzle');
-var Solver = require('../lib/solver');
 var yargs = require('yargs')
             .usage('Usage: ' + pjson.name + ' [action] [-l, --length] [-m, --max]')
-            .example(pjson.name + ' play', 'play a game with a 4-length secret with integers from 1 to 6')
-            .example(pjson.name + ' watch -l 15 -m 25', 'watch an algorithm reason out a 15-length secret with integers from 1 to 25')
+            .example(pjson.name, 'play a game with a 4-length secret with integers from 1 to 6')
+            .example(pjson.name + ' -l 15 -m 25', 'play a game a 15-length secret with integers from 1 to 25')
             .default('length', 4)
             .alias('l', 'length')
             .describe('l', 'number of numbers in the secret number sequence')
@@ -18,7 +17,14 @@ var yargs = require('yargs')
 var argv = yargs.argv;
 
 switch (argv._[0]) {
-  case 'play':
+  case 'watch':
+    // TODO fix once solver is implemented
+    console.error('Solver is not yet implemented :(');
+    break;
+  case 'help':
+    console.log(yargs.help());
+    break;
+  default:
     var puzzle = new Puzzle(argv.length, argv.max);
     console.log('Now playing with');
     console.log('* ' + puzzle.secret_length + '-character secret');
@@ -48,23 +54,5 @@ switch (argv._[0]) {
         console.log('Good job <3'); 
       }
     });
-    break;
-  case 'watch':
-    var puzzle = new Puzzle();
-    var solver = new Solver(puzzle);
-    var round = 0;
-    solver.solve(function (guess, judgment) {
-      round++;
-      console.log(round, guess, judgment);
-    }, function () {
-      console.log('Completed in', round, 'rounds.');
-    });
-    break;
-  case 'help':
-    console.log(yargs.help());
-    break;
-  default:
-    console.error(argv._[0], 'is not a recognized command :(');
-    console.error(yargs.help());
     break;
 }
