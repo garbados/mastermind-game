@@ -1,0 +1,9 @@
+{
+  "source": "./lib",
+  "destination": "./docs",
+  "index": "./readme.md",
+  "test": {
+    "type": "mocha",
+    "source": "./test"
+  }
+}
