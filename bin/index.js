@@ -1,57 +1,40 @@
 #!/usr/bin/env node
 
-var pjson = require('../package.json');
-var Puzzle = require('../lib/puzzle');
+var Game = require('../lib').GameForHumans
+var pkg = require('../package.json')
 var yargs = require('yargs')
-            .usage('Usage: ' + pjson.name + ' [action] [-l, --length] [-m, --max]')
-            .example(pjson.name, 'play a game with a 4-length secret with integers from 1 to 6')
-            .example(pjson.name + ' -l 15 -m 25', 'play a game a 15-length secret with integers from 1 to 25')
-            .default('length', 4)
-            .alias('l', 'length')
-            .describe('l', 'number of numbers in the secret number sequence')
-            .default('max', 6)
-            .alias('m', 'max')
-            .describe('m', 'the maximum number a secret number can be')
-            .version('v' + pjson.version + '\n', 'version');
-var argv = yargs.argv;
 
-switch (argv._[0]) {
-  case 'watch':
-    // TODO fix once solver is implemented
-    console.error('Solver is not yet implemented :(');
-    break;
-  case 'help':
-    console.log(yargs.help());
-    break;
-  default:
-    var puzzle = new Puzzle(argv.length, argv.max);
-    console.log('Now playing with');
-    console.log('* ' + puzzle.secret_length + '-character secret');
-    console.log('* integers from 1 to ' + puzzle.secret_max);
-    console.log('Guess with spaces between integers, ex: 1 2 3 4');
-    console.log('To exit, press CTRL-C.');
-    console.log('Have fun!');
-    var rounds = 0;
-    if (argv.cheat)
-      console.log('PSST the secret is', puzzle.secret.join(' '));
-    puzzle.play(function (judgment) {
-      rounds++;
-      console.log('B:', judgment.B);
-      console.log('W:', judgment.W);
-    }, function (err) {
-      if (err) {
-        if (err.message === 'canceled') {
-          console.log('');
-          console.log('Bye!');
-        } else {
-          throw new Error(err);
-        }
-      } else {
-        console.log('You win!');
-        // TODO high scores
-        console.log('Rounds:', rounds);
-        console.log('Good job <3'); 
-      }
-    });
-    break;
-}
+// yarr
+var argv = yargs
+  .version('v', pkg.version)
+  .usage('Usage: ' + pkg.name + ' [action] [-l, --length] [-m, --max]')
+  .example(pkg.name, 'Play a game with default options.')
+  .example(pkg.name + ' -l 15 -m 25', 'Play a game a 15-length secret with integers from 1 to 25.')
+  .example(pkg.name + ' --secret 2,1,2,2', 'Play a game using [ 2, 1, 2, 2 ] as the secret sequence.')
+  // secret sequence length
+  .default('length', Game.SECRET_LENGTH)
+  .alias('l', 'length')
+  .describe('l', 'Number of elements in the secret number sequence.')
+  // max value for secret sequence elements
+  .default('max', Game.NUM_CHOICES)
+  .alias('m', 'max')
+  .describe('m', 'Maximum number a secret number can be.')
+  // maximum turns before losing
+  .default('guesses', Game.NUM_GUESSES)
+  .alias('g', 'guesses')
+  .describe('g', 'Number of guesses allowed the user before they lose.')
+  // allow choice of secret
+  .describe('secret', 'Specify the secret used in the game. Use comma-separated values!')
+  // enable help
+  .help('h')
+  .alias('h', 'help')
+  .argv
+
+// LET THE GAMES BEGIN
+var game = new Game({
+  numChoices: argv.m,
+  secretLength: argv.l,
+  numGuesses: argv.g,
+  secret: argv.secret ? argv.secret.split(',').map(function (n) { return parseInt(n) }) : undefined
+})
+game.play()

@@ -1,35 +1,21 @@
-var chai = require('chai');
-var lib;
-try {
-  lib = require('../cov');
-} catch (e) {
-  lib = require('../lib');
-}
+/* global describe, it, before */
 
-describe('mastermind', function () {
-  describe('puzzle', function () {
-    it('should make a secret', function () {
-      var puzzle = new lib.Puzzle();
-      chai.expect(puzzle.secret).to.have.length(puzzle.secret_length);
-    });
+var assert = require('assert')
+var lib = require('../lib')
+var pkg = require('../package.json')
 
-    it('should determine a guess is correct', function () {
-      var puzzle = new lib.Puzzle();
-      puzzle.secret = [1, 2, 3, 4];
-      var judgment = puzzle.judge(puzzle.secret);
-      chai.expect(judgment.B).to.equal(puzzle.secret_length);
-    });
+describe([pkg.name, pkg.version].join(' v'), function () {
+  describe('Game', function () {
+    before(function () {
+      this.game = new lib.Game()
+    })
 
-    it('should determine a guess is not correct', function () {
-      var puzzle = new lib.Puzzle();
-      puzzle.secret = [1, 2, 3, 4];
-      var guess = puzzle.secret.map(function () {
-        return puzzle.secret[0];
-      });
-      var judgment = puzzle.judge(guess);
-      chai.expect(judgment.W).to.above(0);
-    });
-
-    // TODO test prompt and play
-  });
-});
+    it('should generate a secret with appropriate length and values', function () {
+      assert(this.game._opts.secretLength === this.game.secret.length)
+      this.game.secret.forEach((n) => {
+        assert(n > 0)
+        assert(n <= this.game._opts.numChoices)
+      })
+    })
+  })
+})

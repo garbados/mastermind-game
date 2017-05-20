@@ -4,16 +4,13 @@
   "description": "Play Mastermind in your terminal.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm link",
-    "test": "standard 'lib.js' 'test.js' 'bin.js' && mocha -R spec",
+    "test": "standard 'lib/*.js' 'test/*.js' 'bin/*.js' && mocha -R spec",
     "cov": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "docs": "esdoc",
-    "start": "mastermind"
+    "start": "./bin/index.js"
   },
-  "bin": {
-    "mastermind": "./bin/index.js"
-  },
+  "bin": "./bin/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/garbados/mastermind-game.git"
@@ -27,6 +24,7 @@
     "standard": "^10.0.2"
   },
   "dependencies": {
+    "async": "^2.4.0",
     "cli-table2": "^0.2.0",
     "prompt": "^1.0.0",
     "underscore": "^1.7.0",
