@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/garbados/mastermind-game.svg)](https://travis-ci.org/garbados/mastermind-game)
 [![Coverage Status](https://coveralls.io/repos/github/garbados/mastermind-game/badge.svg?branch=master)](https://coveralls.io/github/garbados/mastermind-game?branch=master)
+[![npm version](https://badge.fury.io/js/mastermind-game.svg)](https://badge.fury.io/js/mastermind-game)
 
 ![Mastermind!](https://upload.wikimedia.org/wikipedia/commons/2/2d/Mastermind.jpg)
 
