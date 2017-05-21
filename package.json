@@ -7,7 +7,7 @@
     "test": "standard 'lib/*.js' 'test/*.js' 'bin/*.js' && mocha -R spec",
     "cov": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "docs": "jsdoc -R readme.md -d ./docs ./lib/*.js",
+    "docs": "jsdoc -R readme.md -d ./docs -c .jsdoc.conf ./lib/*.js",
     "start": "./bin/index.js"
   },
   "bin": "./bin/index.js",
