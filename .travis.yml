@@ -1,3 +1,8 @@
 language: node_js
 node_js:
-- '7.4.0'
+- 7.4.0
+env:
+  global:
+    secure: YH7Z/ES6xEj+KiN5u0r0IxTvA6UO92PnlSjysNMM+tlKAO1M+fQjb3epyixgHvEldu/+iLe2ciF8jAukGobO1uWcHX7VMxklFyliKLq/xsG5HApQPY5i41xouB3zhrFSF6HWHGCYEPCDO66f0LvUL0P+4bazxSFgCLzb9K0ZC9Y=
+after_success:
+- npm run coveralls
