@@ -1,13 +1,13 @@
 {
   "name": "mastermind-game",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Play Mastermind in your terminal.",
   "main": "index.js",
   "scripts": {
     "test": "standard 'lib/*.js' 'test/*.js' 'bin/*.js' && mocha -R spec",
     "cov": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "docs": "esdoc",
+    "docs": "jsdoc -R readme.md -d ./docs ./lib/*.js",
     "start": "./bin/index.js"
   },
   "bin": "./bin/index.js",
@@ -18,7 +18,7 @@
   "author": "Diana Thayer <garbados@gmail.com>",
   "license": "GPL-3.0",
   "devDependencies": {
-    "esdoc": "^0.5.2",
+    "jsdoc": "^3.4.3",
     "mocha": "^3.4.1",
     "nyc": "^10.3.2",
     "standard": "^10.0.2"
