@@ -1,2 +1,6 @@
 node_modules
 .nyc_output
+.publish
+CHANGELOG.md
+docs
+CHANGELOG.md
