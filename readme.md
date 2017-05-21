@@ -1,14 +1,15 @@
 # mastermind-game
 
 [![Build Status](https://travis-ci.org/garbados/mastermind-game.svg)](https://travis-ci.org/garbados/mastermind-game)
+[![Coverage Status](https://coveralls.io/repos/github/garbados/mastermind-game/badge.svg?branch=master)](https://coveralls.io/github/garbados/mastermind-game?branch=master)
 
-![Mastermind!](http://upload.wikimedia.org/wikipedia/commons/2/2d/Mastermind.jpg)
+![Mastermind!](https://upload.wikimedia.org/wikipedia/commons/2/2d/Mastermind.jpg)
 
-Play [Mastermind](http://en.wikipedia.org/wiki/Mastermind_%28board_game%29) in your terminal!
+Play [Mastermind](https://en.wikipedia.org/wiki/Mastermind_%28board_game%29) in your terminal!
 
 ## Install
 
-To play, you'll need [node.js](http://nodejs.org/) installed. Then, use [npm](https://www.npmjs.com/) to install:
+To play, you'll need [node.js](https://nodejs.org/) installed. Then, use [npm](https://www.npmjs.com/) to install:
 
 	npm install -g mastermind-game
 
