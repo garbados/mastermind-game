@@ -1,8 +1,10 @@
 # mastermind-game
 
-[![Build Status](https://travis-ci.org/garbados/mastermind-game.svg)](https://travis-ci.org/garbados/mastermind-game)
-[![Coverage Status](https://coveralls.io/repos/github/garbados/mastermind-game/badge.svg?branch=master)](https://coveralls.io/github/garbados/mastermind-game?branch=master)
-[![npm version](https://badge.fury.io/js/mastermind-game.svg)](https://www.npmjs.com/package/mastermind-game)
+[![Stability](https://img.shields.io/badge/stability-stable-green.svg?style=flat-square)](https://nodejs.org/api/documentation.html#documentation_stability_index)
+[![NPM Version](https://img.shields.io/npm/v/mastermind-game.svg?style=flat-square)](https://www.npmjs.com/package/mastermind-game)
+[![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
+[![Build Status](https://img.shields.io/travis/garbados/mastermind-game/master.svg?style=flat-square)](https://travis-ci.org/garbados/mastermind-game)
+[![Coverage Status](https://img.shields.io/coveralls/github/garbados/mastermind-game/master.svg?style=flat-square)](https://coveralls.io/github/garbados/mastermind-game?branch=master)
 
 ![Mastermind!](https://upload.wikimedia.org/wikipedia/commons/2/2d/Mastermind.jpg)
 
