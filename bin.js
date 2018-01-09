@@ -23,7 +23,7 @@ class GameForHumans extends Game {
         properties: {
           guess: {
             description: 'Please enter your guess:',
-            message: this.message,
+            message: 'Guesses must be space-delimited sequences with exactly ' + String(this.secretLength) + ' integers between 1 and ' + String(this.numChoices) + '.',
             required: true,
             type: 'string',
             pattern: '^' + this.secret.map(() => { return '[1-' + String(this.numChoices) + ']' }).join(' ') + '$',
@@ -58,7 +58,6 @@ class GameForHumans extends Game {
     console.log('Let\'s play a game...')
     console.log('I\'m thinking of ' + this.secretLength + ' numbers between 1 and ' + this.numChoices + '.')
     console.log('Can you guess the sequence?')
-    console.log(this.message)
     // TODO all this fucking printing makes me bonkers
     async.doUntil(this.promptGuess.bind(this), (guess) => {
       history.push(guess)
@@ -83,10 +82,6 @@ class GameForHumans extends Game {
         done(null, results)
       }
     })
-  }
-
-  get message () {
-    return 'Guesses must be space-delimited sequences with exactly ' + String(this.secretLength) + ' integers between 1 and ' + String(this.numChoices) + '.'
   }
 }
 
