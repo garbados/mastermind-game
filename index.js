@@ -3,6 +3,7 @@
  * and strategies that play it for you!
  * @module mastermind-game
  */
+'use strict'
 
 const NUM_CHOICES = 6
 const SECRET_LENGTH = 4
