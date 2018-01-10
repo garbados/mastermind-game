@@ -3,4 +3,4 @@ node_modules
 .publish
 CHANGELOG.md
 docs
-CHANGELOG.md
+package-lock.json

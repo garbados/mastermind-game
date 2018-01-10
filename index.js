@@ -140,8 +140,24 @@ class Game {
  * that play the game.
  * Sub-classes must implement `.guess()`
  * in order to play the game!
+ *
+ * For example:
+ *
+ * ```javascript
+ * const {GameForMachines} = require('mastermind-game')
+ *
+ * class YourStrategy extends GameForMachines {
+ *   // guesses randomly, regardless of past guesses
+ *   guess (history) {
+ *     let guess = []
+ *     for (var i = 0; i < this.secretLength; i++) {
+ *       guess.push(Math.floor(Math.random() * this.numChoices))
+ *     }
+ *     return guess
+ *   }
+ * }
+ * ````
  * @implements {Game}
- * @abstract
  */
 class GameForMachines extends Game {
   constructor (opts) {

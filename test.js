@@ -1,8 +1,8 @@
 /* global describe, it, before */
 
 var assert = require('assert')
-var lib = require('../lib')
-var pkg = require('../package.json')
+var lib = require('.')
+var pkg = require('./package.json')
 
 describe([pkg.name, pkg.version].join(' v'), function () {
   describe('Game', function () {

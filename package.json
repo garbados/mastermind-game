@@ -4,13 +4,13 @@
   "description": "Play Mastermind in your terminal.",
   "main": "index.js",
   "scripts": {
-    "test": "standard 'lib/*.js' 'test/*.js' 'bin/*.js' && mocha -R spec",
+    "test": "standard && mocha -R spec test.js",
     "cov": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "docs": "jsdoc -R readme.md -d ./docs -c .jsdoc.conf ./lib/*.js",
-    "start": "./bin/index.js"
+    "docs": "jsdoc -R readme.md -d ./docs -c .jsdoc.conf index.js -t ./node_modules/ink-docstrap/template && cp Mastermind.png docs/",
+    "start": "./bin.js"
   },
-  "bin": "./bin/index.js",
+  "bin": "./bin.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/garbados/mastermind-game.git"
@@ -19,6 +19,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "coveralls": "^2.13.1",
+    "ink-docstrap": "^1.3.2",
     "jsdoc": "^3.4.3",
     "mocha": "^3.4.1",
     "nyc": "^10.3.2",
