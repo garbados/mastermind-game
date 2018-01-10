@@ -108,14 +108,14 @@ class GameForHumans extends Game {
       }
     }
 
-    function handlePrompt (err, guess, done) {
+    function handlePrompt (err, guess) {
       if (err) return done(err)
-      var advance = handleGuess.call(this, guess)
+      var advance = !handleGuess.call(this, guess)
       if (advance) {
         var next = handlePrompt.bind(this)
-        this.promptGuess(function (err, guess) {
-          next(err, guess, done)
-        })
+        return this.promptGuess(next)
+      } else if (done) {
+        return done()
       }
     }
 
@@ -132,7 +132,7 @@ class GameForHumans extends Game {
 // yarr
 var argv = yargs
   .version('v', pkg.version)
-  .usage('Usage: ' + pkg.name + ' [action] [-l, --length] [-m, --max]')
+  .usage('Usage: ' + pkg.name + ' [options]')
   .example(pkg.name, 'Play a game with default options.')
   .example(pkg.name + ' -l 15 -m 25', 'Play a game a 15-length secret with integers from 1 to 25.')
   .example(pkg.name + ' --secret 2,1,2,2', 'Play a game using 2 1 2 2 as the secret sequence.')
