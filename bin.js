@@ -55,10 +55,11 @@ class GameForHumans extends Game {
   play (done) {
     var history = []
     // get each turn's guess
-    console.log('Let\'s play a game...')
-    console.log('I\'m thinking of ' + this.secretLength + ' numbers between 1 and ' + this.numChoices + '.')
+    console.log('Do you want to play a game?')
+    console.log('')
+    console.log('I am thinking of a sequence of %i numbers between 1 and %i.', this.secretLength, this.numChoices)
     console.log('Can you guess the sequence?')
-    // TODO all this fucking printing makes me bonkers
+    console.log('')
     async.doUntil(this.promptGuess.bind(this), (guess) => {
       history.push(guess)
       if (this.isGuessCorrect(guess)) {
