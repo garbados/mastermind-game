@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict'
 
 var async = require('async')
 var Game = require('.').Game
@@ -7,8 +8,23 @@ var prompt = require('prompt')
 var Table = require('cli-table2')
 var yargs = require('yargs')
 
+function log (msg) {
+  if (process.env.DEBUG || process.env.LOG) {
+    console.log(`[${pkg.name}] ${msg}`)
+  }
+}
+
+function debug (msg) {
+  if (process.env.DEBUG) {
+    console.log(`[${pkg.name}] ${msg}`)
+  }
+}
+
 class GameForHumans extends Game {
   preparePrompt () {
+    debug(`The secret is: ${this.secret.join(' ')}`)
+    log(`The ceiling for values is: ${this.numChoices}`)
+    log(`The number of allowed guesses is: ${this.numGuesses}`)
     prompt.message = ''
     prompt.delimiter = ''
     prompt.colors = false
@@ -16,22 +32,42 @@ class GameForHumans extends Game {
     this._promptReady = true
   }
 
+  /**
+   * Takes a string containing digits and
+   * converts it to an array of numbers.
+   *
+   * When this.numChoices is greater than 9,
+   * numbers will require spaces as delimiters.
+   * Otherwise, each digit will be parsed
+   * as a separate number.
+   *
+   * @param  {String} rawGuess A string of digits provided by the user.
+   * @return {Array<Number>}
+   */
+  formatGuess (rawGuess) {
+    log(`Raw guess: ${JSON.stringify(rawGuess)}`)
+    let guess = rawGuess
+      .split(/ ?/)
+      .filter(d => /\d/.test(d))
+      .slice(0, this.secretLength)
+      .map(n => parseInt(n))
+    log(`Guess: ${JSON.stringify(guess)}`)
+    return guess
+  }
+
   promptGuess (done) {
     if (!this._promptReady) this.preparePrompt()
+    const msg = `A guess requires ${this.secretLength} digits between (inclusive!) 1 and ${this.numChoices} separated by spaces.`
     prompt
       .get({
         properties: {
           guess: {
             description: 'Please enter your guess:',
-            message: 'Guesses must be space-delimited sequences with exactly ' + String(this.secretLength) + ' integers between 1 and ' + String(this.numChoices) + '.',
+            message: msg,
             required: true,
             type: 'string',
-            pattern: '^' + this.secret.map(() => { return '[1-' + String(this.numChoices) + ']' }).join(' ') + '$',
-            before: function (rawGuess) {
-              return rawGuess.split(' ').map(function (n) {
-                return parseInt(n)
-              })
-            }
+            pattern: new RegExp(`([1-${this.numChoices}] ?){${this.secretLength}}`),
+            before: this.formatGuess.bind(this)
           }
         }
       }, function (err, result) {
@@ -57,10 +93,10 @@ class GameForHumans extends Game {
     // get each turn's guess
     console.log('Do you want to play a game?')
     console.log('')
-    console.log('I am thinking of a sequence of %i numbers between 1 and %i.', this.secretLength, this.numChoices)
+    console.log(`I am thinking of a sequence of ${this.secretLength} numbers between 1 and ${this.numChoices}.`)
     console.log('Can you guess the sequence?')
     console.log('')
-    async.doUntil(this.promptGuess.bind(this), (guess) => {
+    async.doUntil(this.promptGuess.bind(this), function (guess) {
       history.push(guess)
       if (this.isGuessCorrect(guess)) {
         // print: correct! you win!
@@ -76,7 +112,7 @@ class GameForHumans extends Game {
         this.respondToGuess(guess)
         return false
       }
-    }, function (err, results) {
+    }.bind(this), function (err, results) {
       if (err) {
         console.log(err)
       } else if (done) {
