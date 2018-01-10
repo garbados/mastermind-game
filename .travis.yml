@@ -9,8 +9,10 @@ env:
   - secure: AzCJB5+Ogz+HeUnISoq6VQmSZJFhRa1H0ZWGzRQTfRIM+kqYsFTYi23Vd8GBew8k7a6jiv48dZ7U3CYakTV8DP2TCdEUqfB8fn9R/uW1pz3SQwNGWoAa4beIZ8ETWe/MWSS0jDwexKcNk4pqnY01VrOMoY97VsbWnDCRP9YLvP8=
 after_success:
 - npm run coveralls
+- npm run docs
 deploy:
   provider: pages
+  local_dir: ./docs
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   on:
