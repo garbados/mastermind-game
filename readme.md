@@ -66,7 +66,7 @@ class MyStrategy extends GameForMachines {
 }
 ```
 
-Check out [GameForMachines](./module-mastermind-game-GameForMachines.html) for more information on writing strategies.
+Check out [GameForMachines](https://garbados.github.io/mastermind-game/module-mastermind-game-GameForMachines.html) for more information on writing strategies.
 
 ## Tests
 
