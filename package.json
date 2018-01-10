@@ -26,7 +26,6 @@
     "standard": "^10.0.2"
   },
   "dependencies": {
-    "async": "^2.4.0",
     "cli-table2": "^0.2.0",
     "prompt": "^1.0.0",
     "yargs": "^8.0.1"

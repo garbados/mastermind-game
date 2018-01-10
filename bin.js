@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 'use strict'
 
-var async = require('async')
 var Game = require('.').Game
 var pkg = require('./package.json')
 var prompt = require('prompt')
@@ -90,13 +89,8 @@ class GameForHumans extends Game {
 
   play (done) {
     var history = []
-    // get each turn's guess
-    console.log('Do you want to play a game?')
-    console.log('')
-    console.log(`I am thinking of a sequence of ${this.secretLength} numbers between 1 and ${this.numChoices}.`)
-    console.log('Can you guess the sequence?')
-    console.log('')
-    async.doUntil(this.promptGuess.bind(this), function (guess) {
+
+    function handleGuess (guess) {
       history.push(guess)
       if (this.isGuessCorrect(guess)) {
         // print: correct! you win!
@@ -112,13 +106,26 @@ class GameForHumans extends Game {
         this.respondToGuess(guess)
         return false
       }
-    }.bind(this), function (err, results) {
-      if (err) {
-        console.log(err)
-      } else if (done) {
-        done(null, results)
+    }
+
+    function handlePrompt (err, guess, done) {
+      if (err) return done(err)
+      var advance = handleGuess.call(this, guess)
+      if (advance) {
+        var next = handlePrompt.bind(this)
+        this.promptGuess(function (err, guess) {
+          next(err, guess, done)
+        })
       }
-    })
+    }
+
+    // get each turn's guess
+    console.log('Do you want to play a game?')
+    console.log('')
+    console.log(`I am thinking of a sequence of ${this.secretLength} numbers between 1 and ${this.numChoices}.`)
+    console.log('Can you guess the sequence?')
+    console.log('')
+    this.promptGuess(handlePrompt.bind(this))
   }
 }
 
