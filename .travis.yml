@@ -1,14 +1,17 @@
 language: node_js
 node_js:
-- 7.4.0
+- 4
+- 6
+- 8
 env:
   global:
-    secure: YH7Z/ES6xEj+KiN5u0r0IxTvA6UO92PnlSjysNMM+tlKAO1M+fQjb3epyixgHvEldu/+iLe2ciF8jAukGobO1uWcHX7VMxklFyliKLq/xsG5HApQPY5i41xouB3zhrFSF6HWHGCYEPCDO66f0LvUL0P+4bazxSFgCLzb9K0ZC9Y=
+  - secure: YH7Z/ES6xEj+KiN5u0r0IxTvA6UO92PnlSjysNMM+tlKAO1M+fQjb3epyixgHvEldu/+iLe2ciF8jAukGobO1uWcHX7VMxklFyliKLq/xsG5HApQPY5i41xouB3zhrFSF6HWHGCYEPCDO66f0LvUL0P+4bazxSFgCLzb9K0ZC9Y=
+  - secure: AzCJB5+Ogz+HeUnISoq6VQmSZJFhRa1H0ZWGzRQTfRIM+kqYsFTYi23Vd8GBew8k7a6jiv48dZ7U3CYakTV8DP2TCdEUqfB8fn9R/uW1pz3SQwNGWoAa4beIZ8ETWe/MWSS0jDwexKcNk4pqnY01VrOMoY97VsbWnDCRP9YLvP8=
 after_success:
 - npm run coveralls
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $repo_token
+  github_token: $GITHUB_TOKEN
   on:
     branch: master
