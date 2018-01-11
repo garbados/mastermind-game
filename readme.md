@@ -1,5 +1,7 @@
 # mastermind-game
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/garbados/mastermind-game.svg)](https://greenkeeper.io/)
+
 [![Stability](https://img.shields.io/badge/stability-stable-green.svg?style=flat-square)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 [![NPM Version](https://img.shields.io/npm/v/mastermind-game.svg?style=flat-square)](https://www.npmjs.com/package/mastermind-game)
 [![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
