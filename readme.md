@@ -5,6 +5,7 @@
 [![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 [![Build Status](https://img.shields.io/travis/garbados/mastermind-game/master.svg?style=flat-square)](https://travis-ci.org/garbados/mastermind-game)
 [![Coverage Status](https://img.shields.io/coveralls/github/garbados/mastermind-game/master.svg?style=flat-square)](https://coveralls.io/github/garbados/mastermind-game?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/garbados/mastermind-game.svg)](https://greenkeeper.io/)
 
 ![Mastermind!](./Mastermind.png)
 
