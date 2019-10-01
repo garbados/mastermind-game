@@ -4,7 +4,7 @@
 var Game = require('.').Game
 var pkg = require('./package.json')
 var prompt = require('prompt')
-var Table = require('cli-table2')
+var Table = require('cli-table')
 var yargs = require('yargs')
 
 function log (msg) {
