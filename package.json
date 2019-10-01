@@ -1,6 +1,6 @@
 {
   "name": "mastermind-game",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Play Mastermind in your terminal.",
   "main": "index.js",
   "scripts": {
