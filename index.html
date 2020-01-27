@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>mastermind-game Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.yeti.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">mastermind-game</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-mastermind-game.html">mastermind-game</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-mastermind-game-Cheater.html">mastermind-game~Cheater</a></li><li><a href="module-mastermind-game-Game.html">mastermind-game~Game</a></li><li><a href="module-mastermind-game-GameForMachines.html">mastermind-game~GameForMachines</a></li><li><a href="module-mastermind-game-Loser.html">mastermind-game~Loser</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>mastermind-game</h1>
+<p><a href="https://nodejs.org/api/documentation.html#documentation_stability_index"><img src="https://img.shields.io/badge/stability-stable-green.svg?style=flat-square" alt="Stability"></a>
+<a href="https://www.npmjs.com/package/mastermind-game"><img src="https://img.shields.io/npm/v/mastermind-game.svg?style=flat-square" alt="NPM Version"></a>
+<a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="JS Standard Style"></a>
+<a href="https://travis-ci.org/garbados/mastermind-game"><img src="https://img.shields.io/travis/garbados/mastermind-game/master.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://coveralls.io/github/garbados/mastermind-game?branch=master"><img src="https://img.shields.io/coveralls/github/garbados/mastermind-game/master.svg?style=flat-square" alt="Coverage Status"></a>
+<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/garbados/mastermind-game.svg" alt="Greenkeeper badge"></a></p>
+<p><img src="./Mastermind.png" alt="Mastermind!"></p>
+<p>Play <a href="https://en.wikipedia.org/wiki/Mastermind_%28board_game%29">Mastermind</a> in your terminal!</p>
+<h2>Install</h2>
+<p>To play, you'll need <a href="https://nodejs.org/">node.js</a> installed. Then, use <a href="https://www.npmjs.com/">npm</a> to install:</p>
+<pre class="prettyprint source lang-bash"><code>$ npm i -g mastermind-game
+</code></pre>
+<p>Then, just type this in your terminal:</p>
+<pre class="prettyprint source lang-bash"><code>$ mastermind-game
+</code></pre>
+<p>...and the game will begin!</p>
+<p>It looks like this:</p>
+<pre class="prettyprint source lang-bash"><code>$ mastermind-game
+Do you want to play a game?
+
+I am thinking of a sequence of 4 numbers between 1 and 6.
+Can you guess the sequence?
+
+Please enter your guess: 1 1 2 2
+┌─────────┬──────────────────┬────────────────┐
+│ Guess   │ Correct Position │ Correct Number │
+├─────────┼──────────────────┼────────────────┤
+│ 1 1 2 2 │ 1                │ 1              │
+└─────────┴──────────────────┴────────────────┘
+Please enter your guess:
+</code></pre>
+<p>For more information, try <code>mastermind-game -h</code> or <code>mastermind-game --help</code>!</p>
+<h2>Writing Strategies</h2>
+<p>You can use <code>mastermind-game</code> as a module and write your own strategies! Install it like so:</p>
+<pre class="prettyprint source lang-bash"><code>npm i -S mastermind-game
+</code></pre>
+<p>Then, sub-class <code>GameForMachines</code> and implement <code>.guess()</code>:</p>
+<pre class="prettyprint source lang-javascript"><code>const {GameForMachines} = require('mastermind-game')
+
+class MyStrategy extends GameForMachines {
+  guess (history) {
+    // write your strategy's logic here!
+  }
+}
+</code></pre>
+<p>Check out <a href="https://garbados.github.io/mastermind-game/module-mastermind-game-GameForMachines.html">GameForMachines</a> for more information on writing strategies.</p>
+<h2>Tests</h2>
+<p>Download the project's source in order to run the test suite:</p>
+<pre class="prettyprint source lang-bash"><code>git clone https://github.com/garbados/mastermind-game.git
+cd mastermind-game
+npm install
+npm test
+</code></pre>
+<p>You can run <code>npm run cov</code> to see a report of test coverage.</p>
+<h2>Contributing</h2>
+<p>All contributions are welcome: bug reports, feature requests, &quot;why doesn't this work&quot; questions, patches for fixes and features, etc. For all of the above, <a href="https://github.com/garbados/mastermind-game/issues">file an issue</a> or <a href="https://github.com/garbados/mastermind-game/pulls">submit a pull request</a>.</p>
+<h2>License</h2>
+<p><a href="https://opensource.org/licenses/gpl-3.0.html">GPL-3.0</a></p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+	
+		on 2020-01-27T10:21:02+00:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+
+</body>
+</html>
